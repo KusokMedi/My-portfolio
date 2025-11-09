@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+  --bg: #0d0d0f;
+  --text: #ffffff;
+  --accent: #00b4d8;
+  --secondary: #22222a;
+  --shadow: rgba(0, 180, 216, 0.4);
+}
+
+/* Сброс и базовая настройка */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Анимация плавного появления */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Заголовок */
+header {
+  margin-top: 70px;
+  text-align: center;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.logo {
+  width: 110px;
+  height: 110px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  transition: transform 0.3s, filter 0.4s;
+}
+
+/* Эффект из main.js */
+.pulse {
+  filter: drop-shadow(0 0 15px var(--shadow));
+  transform: scale(1.05);
+}
+
+.logo:hover {
+  transform: rotate(3deg) scale(1.1);
+  filter: drop-shadow(0 0 10px var(--accent));
+}
+
+/* Заголовки */
+h1 {
+  font-size: 2.3em;
+  font-weight: 600;
+}
+
+.subtitle {
+  color: #cccccc;
+  font-size: 1.1em;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  animation: fadeInUp 1.5s ease;
+}
+
+/* Контент */
+main {
+  width: 90%;
+  max-width: 750px;
+  animation: fadeInUp 1.3s ease;
+}
+
+section {
+  background: var(--secondary);
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 50px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px var(--shadow);
+}
+
+section h2 {
+  color: var(--accent);
+  margin-bottom: 12px;
+  font-size: 1.4em;
+}
+
+section p {
+  line-height: 1.6;
+  color: #ddd;
+}
+
+/* Контакты */
+.icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.icons img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 5px transparent);
+  transition: transform 0.25s, filter 0.3s;
+}
+
+.icons img:hover {
+  transform: scale(1.2) rotate(5deg);
+  filter: drop-shadow(0 0 10px var(--accent));
+}
+
+/* Footer */
+footer {
+  margin-top: auto;
+  padding: 25px;
+  text-align: center;
+  color: #999;
+  font-size: 0.95em;
+  border-top: 1px solid #1e1e24;
+  width: 100%;
+  background: #0b0b0d;
+}
+
+/* 404 страница */
+.notfound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  animation: fadeInUp 1s ease;
+}
+
+.notfound h1 {
+  font-size: 7em;
+  color: var(--accent);
+  text-shadow: 0 0 25px var(--shadow);
+}
+
+.notfound p {
+  margin-top: 10px;
+  color: #bbb;
+  font-size: 1.3em;
+}
+
+.back {
+  margin-top: 25px;
+  text-decoration: none;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.back:hover {
+  background: var(--accent);
+  color: var(--bg);
+  box-shadow: 0 0 20px var(--shadow);
+}
+
+/* Эффект плавного появления текста */
+.fade {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .logo {
+    width: 90px;
+    height: 90px;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  section {
+    padding: 20px;
+  }
+
+  .icons img {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .subtitle {
+    font-size: 0.95em;
+  }
+
+  section h2 {
+    font-size: 1.2em;
+  }
+
+  footer {
+    font-size: 0.8em;
+  }
+}

@@ -4,8 +4,10 @@
   --bg: #0d0d0f;
   --text: #ffffff;
   --accent: #00b4d8;
-  --secondary: #22222a;
-  --shadow: rgba(0, 180, 216, 0.4);
+  --secondary: #1a1a1f;
+  --shadow: rgba(0, 180, 216, 0.3);
+  --card-bg: rgba(255, 255, 255, 0.02);
+  --border: rgba(0, 180, 216, 0.15);
 }
 
 /* Сброс и базовая настройка */
@@ -87,17 +89,20 @@ main {
 }
 
 section {
-  background: var(--secondary);
-  border-radius: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
   padding: 30px;
   margin-bottom: 50px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s ease;
 }
 
 section:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 25px var(--shadow);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px var(--shadow);
+  border-color: var(--accent);
 }
 
 section h2 {
@@ -111,26 +116,115 @@ section p {
   color: #ddd;
 }
 
-/* Контакты */
-.icons {
+/* Переключатель языков */
+.language-switcher {
+  margin-top: 20px;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 25px;
+  gap: 10px;
+}
+
+.lang-btn {
+  background: var(--secondary);
+  color: var(--text);
+  border: 1px solid var(--accent);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+}
+
+.lang-btn.active {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.lang-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Портфолио */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
   margin-top: 20px;
 }
 
-.icons img {
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-  filter: drop-shadow(0 0 5px transparent);
-  transition: transform 0.25s, filter 0.3s;
+.project {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 180, 216, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.icons img:hover {
-  transform: scale(1.2) rotate(5deg);
+.project:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px var(--shadow);
+}
+
+.project h3 {
+  color: var(--accent);
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.project p {
+  color: #ccc;
+  line-height: 1.5;
+}
+
+/* Контакты */
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.contact-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text);
+  padding: 15px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 180, 216, 0.2);
+  transition: all 0.3s ease;
+  min-width: 80px;
+}
+
+.contact-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px var(--shadow);
+  background: rgba(0, 180, 216, 0.1);
+}
+
+.contact-link img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 0 5px transparent);
+  transition: filter 0.3s;
+}
+
+.contact-link:hover img {
   filter: drop-shadow(0 0 10px var(--accent));
+}
+
+.contact-link span {
+  font-size: 0.9em;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.contact-link:hover span {
+  color: var(--accent);
 }
 
 /* Footer */
@@ -187,13 +281,38 @@ footer {
 /* Эффект плавного появления текста */
 .fade {
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 1s ease, transform 1s ease;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .fade.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Декоративные элементы */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.decorative-dots {
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, var(--accent) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.1;
+  animation: float 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.decorative-dots:nth-child(2) {
+  top: 60%;
+  left: 5%;
+  animation-delay: -3s;
 }
 
 /* Адаптивность */
